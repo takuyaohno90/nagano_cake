@@ -1,0 +1,12 @@
+<h1>登録情報</h1> <%= link_to '編集する', customers_informaition_edit_path %>
+
+<p>氏名<%= current_customer.last_name %> <%= current_customer.first_name %></p>
+<p>カナ<%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %></p>
+
+<p>郵便番号<%= current_customer.postal_code %></p>
+<p>住所<%= current_customer.address %></p>
+<p>電話番号<%= current_customer.telephone_number %></p>
+<p>メールアドレス<%= current_customer.email %></p>
+
+配送先
+注文履歴
