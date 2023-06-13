@@ -16,6 +16,12 @@ class Public::CustomersController < ApplicationController
   def confirm_withdraw
   end
 
+  def withdraw
+    current_customer.update(is_deleted: 'true')
+    reset_session
+    redirect_to root_path, notice: 'Successfully withdraw from Ecommerce'
+  end
+
   private
 
   def customer_params
