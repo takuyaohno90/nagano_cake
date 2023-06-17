@@ -1,11 +1,13 @@
-<%= form_with model: @Item, url: admin_items_path, method: :post do |f| %>
-  <%= f.file_field :image, accept: "image/*" %>
-  <%= f.text_field :name %>
-  <%= f.text_area :introduction %>
-  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
-  <%= f.text_field :price %>
-  <%= f.radio_button :is_active, true %>
-  <%= f.label :>
+<%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+  <p>商品画像<%= f.file_field :image, accept: "image/*" %></p>
+  <p>商品名<%= f.text_field :name %></p>
+  <p>商品説明<%= f.text_area :introduction %></p>
+  <p>ジャンル<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></p>
+  <p>税抜き価格<%= f.text_field :price %></p>
+  <p>販売ステータス<%= f.radio_button :is_active, true %></p>
+  <%= f.label :is_active, '販売中' %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active, '販売停止中' %></p>
 
   <%= f.submit '新規登録' %>
 <% end %>
