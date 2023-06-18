@@ -1,0 +1,39 @@
+<% if @addresses.errors.any? %>
+  <%= @addresses.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @addresses.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with model: @addresses, url: addresses_path, method: :post  do |f| %>
+  <p>郵便番号(ハイフンなし)<%= f.text_field :postal_code %></p>
+  <p>住所<%= f.text_field :address %></p>
+  <p>宛名<%= f.text_field :name %></p>
+
+  <%= f.submit '新規登録' %>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>宛名</th>
+    <th></th>
+  </tr>
+  <tbody>
+    <% @address.each do |addresss| %>
+    <tr>
+      <td><%= addresss.postal_code %></td>
+      <td><%= addresss.address %></td>
+      <td><%= addresss.name %></td>
+      <td><%= link_to '編集する',edit_address_path(addresss.id) %><%= link_to '削除する', address_path(addresss.id), method: :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

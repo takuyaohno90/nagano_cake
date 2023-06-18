@@ -16,9 +16,9 @@
   <p>ジャンル<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></p>
   <p>税抜き価格<%= f.text_field :price %></p>
   <p>販売ステータス<%= f.radio_button :is_active, true %></p>
-  <%= f.label :is_active, '販売中' %>
+  <%= f.label :is_active_true, '販売中' %>
   <%= f.radio_button :is_active, false %>
-  <%= f.label :is_active, '販売停止中' %></p>
+  <%= f.label :is_active_false, '販売停止中' %></p>
 
   <%= f.submit '新規登録' %>
 <% end %>

@@ -14,10 +14,10 @@
   <p>商品説明<%= f.text_area :introduction %></p>
   <p>ジャンル<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></p>
   <p>税抜き価格<%= f.text_field :price %></p>
-  <p>販売ステータス<%= f.radio_button :is_active, true %></p>
-  <%= f.label :is_active, '販売中' %>
-  <%= f.radio_button :is_active, false %>
-  <%= f.label :is_active, '販売停止中' %></p>
+  <p>販売ステータス<%= f.radio_button :is_active, true, id: "is_active_true" %>
+  <%= f.label :is_active_true, '販売中', for: "is_active_true" %>
+  <%= f.radio_button :is_active, false, id: "is_active_false" %>
+  <%= f.label :is_active_false, '販売停止中', for: "is_active_false" %></p>
 
   <%= f.submit '変更を保存' %>
 <% end %>
