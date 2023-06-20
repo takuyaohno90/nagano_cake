@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :genre
+  has_many :cart_items, dependent: :destroy
   has_one_attached :image
   validates :name, presence: true
   validates :introduction, presence: true
@@ -15,5 +16,14 @@ class Item < ApplicationRecord
       image
     end
   end
+
+  def with_tax_price
+    (price * 1.1).floor
+  end
+  ## 小計を求めるメソッド
+  def subtotal
+    item.with_tax_price * amount
+  end
+
 
 end
