@@ -1,6 +1,7 @@
 class Public::AddressesController < ApplicationController
   def index
-    @address = Address.all
+    @customer = current_customer
+    @address = @customer.addresses
     @addresses = Address.new
   end
 
