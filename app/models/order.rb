@@ -17,6 +17,9 @@ class Order < ApplicationRecord
   end
 
   def confirm_two
+  end
 
+  def address_display
+    '〒' + post_code + '' + shipping_address
   end
 end

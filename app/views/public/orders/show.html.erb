@@ -2,7 +2,7 @@
 <table>
   <tr>
     <th>注文日</th>
-    <td><%= @order.updated_at %></td>
+    <td><%= @order.updated_at.strftime("%Y/%m/%d") %></td>
   </tr>
   <tr>
     <th>配送先</th>
@@ -19,13 +19,13 @@
   </tr>
   <tr>
     <th>ステータス</th>
-    <td><% if @order.order_status == 0 %>
+    <td><% if @order.order_status == "stay" %>
           <%= "入金待ち" %>
-        <% elsif @order.order_status == 1 %>
+        <% elsif @order.order_status == "check" %>
           <%= "入金確認" %>
-        <% elsif @order.order_status == 2 %>
+        <% elsif @order.order_status == "making" %>
           <%= "製作中" %>
-        <% elsif  @order.order_status == 3 %>
+        <% elsif  @order.order_status == "standby" %>
           <%= "発送準備中" %>
         <% else %>
           <%= "発送済" %>
