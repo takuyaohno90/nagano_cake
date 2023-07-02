@@ -3,9 +3,11 @@
 
 <% @items.each do |item| %>
   <p><%= link_to item_path(item.id) do %>
-    <%= image_tag item.get_image, size: "200×200" %>
+    <%= image_tag item.get_image(100, 100) %>
     <% end %></p>
   <p><%= item.name %></p>
   <% price = item.price * 1.1 %>
   <p>￥<%= price.floor %></p>
 <% end %>
+
+<%= paginate @items %>

@@ -8,5 +8,5 @@
 <p>電話番号<%= current_customer.telephone_number %></p>
 <p>メールアドレス<%= current_customer.email %></p>
 
-配送先
-注文履歴
+<p>配送先<%= link_to "一覧を見る", addresses_path %></p>
+<p>注文履歴<%= link_to "一覧を見る", orders_path %></p>

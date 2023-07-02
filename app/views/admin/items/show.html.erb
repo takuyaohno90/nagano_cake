@@ -1,4 +1,4 @@
-<%= image_tag @item.get_image %>
+<%= image_tag @item.get_image(100, 100) %>
 <p>商品名：<%= @item.name %></p>
 <p>商品説明：<%= @item.introduction %></p>
 <p>ジャンル：<%= @item.genre.name %></p>
