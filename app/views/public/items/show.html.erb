@@ -1,11 +1,18 @@
-<%= image_tag @item.get_image(100, 100) %>
-<p><%= @item.name %></p>
-<p><%= @item.introduction %></p>
-<% price = @item.price * 1.1 %>
-<p>￥<%= price.floor %>(税込)</p>
-
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <%= f.select :amount, *[1..10] %>
-  <%= f.submit 'カートに入れる' %>
-<% end %>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-6 d-flex justify-content-center align-items-center" style="margin-right: -65px;">
+      <%= image_tag @item.get_image(300, 300) %>
+    </div>
+    <div class="col-lg-6" style="margin-left: -65px;">
+      <p><%= @item.name %></p>
+      <p><%= @item.introduction %></p>
+      <% price = @item.price * 1.1 %>
+      <p>￥<%= price.floor %>(税込)</p>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+      <%= f.hidden_field :item_id, :value => @item.id %>
+      <%= f.select :amount, *[1..10] %>
+      <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
+
   def update
     completed = 0
     @order_item = OrderItem.find(params[:id])
@@ -12,8 +14,7 @@ class Admin::OrderDetailsController < ApplicationController
       end
     end
 
-    if completed == true
-    else
+    unless completed == true
       @order_item.order.update(order_status: "standby")
     end
     redirect_to admin_order_path(@order_item.order_id)

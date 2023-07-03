@@ -1,15 +1,34 @@
-<p>ようこそ、ながのCAKEへ！</p>
-<p>このサイトは、ケーキ販売のECサイトになります。</p>
-<p>会員でない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 d-flex justify-content-center align-items-center" style="height: 150px; border: 1px solid #000; padding: 1px; margin-top: 50px;">
+      ようこそ、ながのCAKEへ！ </br>
+      このサイトは、ケーキ販売のECサイトになります。 </br>
+      会員でない方も商品の閲覧はできますが、 </br>
+      購入には会員登録が必要になります。 </br>
+    </div>
+  </div>
+  <h5 class="my-3">新着商品</h5>
+  <div class="row">
+    <% @items.each do |item| %>
+      <% if item.is_active == true %>
+      <div class="col-lg-3">
+        <div class="card mb-4 border-0">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(100, 100) %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-title"><%= item.name %></p>
+            <p class="card-text">￥<%= (item.price * 1.1).floor %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-lg-2">
+      <%= link_to "全ての商品を見る", items_path %>
+      </div>
+    </div>
+</div>
 
-<p>新着商品</p>
-<% @items.each do |item| %>
-  <p><%= link_to item_path(item.id) do %>
-    <%= image_tag item.get_image(100, 100) %>
-    <% end %></p>
-  <p><%= item.name %></p>
-  <p>￥<%= (item.price * 1.1).floor %></p>
-<% end %>
-
-<%= link_to "全ての商品を見る", items_path %>

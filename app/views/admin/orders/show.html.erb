@@ -1,4 +1,6 @@
-<p>購入者<%= @order.customer.last_name + @order.customer.first_name %></p>
+<p>購入者<%= link_to admin_customer_path(@order.customer_id) do %>
+          <%= @order.customer.last_name + @order.customer.first_name %>
+          <% end %></p>
 <p>注文日<%= @order.created_at.strftime("%Y/%m/%d") %></p>
 <p>配送先<%= @order.address_display %></p>
 <p>支払方法
@@ -31,7 +33,6 @@
     <td>
       <%= form_with model: order_item, url: admin_order_detail_path(order_item.id) do |f| %>
         <%= f.select :production_status, OrderItem.production_statuses.keys.map { |status| [I18n.t("enums.order_item.production_status.#{status}"), status] } %>
-        <%= f.hidden_field :item_name, value: order_item.item.name %>
         <%= f.submit "更新" %>
       <% end %>
     </td>
