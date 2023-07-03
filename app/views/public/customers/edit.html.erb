@@ -7,24 +7,74 @@
   </ul>
 <% end %>
 
-<h1>会員情報編集</h1>
-<%= form_with model: @customer, url: customers_information_path do |f| %>
-  <h4>氏名</h4>
-    <%= f.text_field :last_name %>
-    <%= f.text_field :first_name %>
-  <h4>フリガナ</h4>
-    <%= f.text_field :last_name_kana %>
-    <%= f.text_field :first_name_kana %>
-  <h4>郵便番号</h4>
-    <%= f.text_field :postal_code %>
-  <h4>住所</h4>
-    <%= f.text_field :address %>
-  <h4>電話番号</h4>
-    <%= f.text_field :telephone_number %>
-  <h4>メールアドレス</h4>
-    <%= f.text_field :email %>
+<div class="container">
+  <h5>会員情報編集</h5>
+  <%= form_with model: @customer, url: customers_information_path do |f| %>
+  <div class="row">
+    <div class="col-lg-3">
+      氏名
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :last_name %>
+      <%= f.text_field :first_name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      フリガナ
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :last_name_kana %>
+      <%= f.text_field :first_name_kana %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      郵便番号
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :postal_code %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      住所
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :address, class: "col-lg-10"  %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      電話番号
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :telephone_number %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      メールアドレス
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
 
-    <%= f.submit '編集内容を保存' %>
-<% end %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.submit '編集内容を保存', class: "btn btn-sm btn-success" %>
+    </div>
+    <div class="col-lg-2">
+      <%= link_to '退会する', customers_confirm_withdraw_path, class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-<%= link_to '退会する', customers_confirm_withdraw_path %>
+
+
+
+

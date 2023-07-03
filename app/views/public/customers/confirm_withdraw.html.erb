@@ -1,7 +1,21 @@
-本当に退会しますか？
-退会すると、会員登録情報や
-これまでの購入履歴が閲覧できなくなります。
-退会する場合は、「退会する」をクリックしてください。
+<div class="container">
+  <div  class="d-flex justify-content-center align-items-center" style="min-height: 100vh; flex-direction: column;">
+    <div class="mb-3">
+      本当に退会しますか？ <br>
+    </div>
+    <div class="mb-3">
+      退会すると、会員登録情報や <br>
+      これまでの購入履歴が閲覧できなくなります。 <br>
+      退会する場合は、「退会する」をクリックしてください。 <br>
+    </div>
+    <div class="mb-3">
+      <%= link_to '退会しない', customers_mypage_path, class: "btn btn-sm btn-primary mr-2" %>
+      <%= link_to '退会する', customers_withdraw_path, method: :patch, class: "btn btn-sm btn-danger ml-2" %>
+    </div>
+  </div>
+</div>
 
-<%= link_to '退会しない', customers_mypage_path %>
-<%= link_to '退会する', customers_withdraw_path, method: :patch %>
+
+
+
+

@@ -1,12 +1,45 @@
-<h1>登録情報</h1> <%= link_to '編集する', customers_informaition_edit_path %>
+<div class="container">
+  <div class="row ml-4">
+    マイページ
+  </div>
+  <div class="row">
+    <h5>登録情報</h5> <%= link_to '編集する', customers_informaition_edit_path, class: "btn btn-sm btn-success" %>
+  </div>
+  <div class="row">
+    <table class="table table-bordered">
+      <tr>
+        <th>氏名</th>
+        <td><%= current_customer.last_name %> <%= current_customer.first_name %></td>
+      </tr>
+      <tr>
+        <th>カナ</th>
+        <td><%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= current_customer.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= current_customer.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= current_customer.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= current_customer.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row my-3">
+    配送先<%= link_to "一覧を見る", addresses_path, class: "btn btn-sm btn-primary mx-3" %>
+  </div>
+  <div class="row my-3">
+    注文履歴<%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary mx-3"  %>
+  </div>
+</div>
 
-<p>氏名<%= current_customer.last_name %> <%= current_customer.first_name %></p>
-<p>カナ<%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %></p>
 
-<p>郵便番号<%= current_customer.postal_code %></p>
-<p>住所<%= current_customer.address %></p>
-<p>電話番号<%= current_customer.telephone_number %></p>
-<p>メールアドレス<%= current_customer.email %></p>
 
-<p>配送先<%= link_to "一覧を見る", addresses_path %></p>
-<p>注文履歴<%= link_to "一覧を見る", orders_path %></p>

@@ -7,10 +7,37 @@
   </ul>
 <% end %>
 
+<div class="container">
+  <h5 class="mt-2">配送先編集</h5>
+  <%= form_with model: @address, url: address_path, method: :patch do |f| %>
+  <div class ="row mt-3">
+    <div class="col-lg-3">
+      郵便番号(ハイフンなし)
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code %>
+    </div>
+  </div>
+  <div class ="row">
+    <div class="col-lg-3">
+      住所
+    </div>
+    <div class="col-lg-7">
+      <%= f.text_field :address, class: "col-lg-7" %>
+    </div>
+  </div>
+  <div class ="row">
+    <div class="col-lg-3">
+      宛名
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :name %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.submit '変更内容を保存', class: "btn btn-sm btn-success" %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-<%= form_with model: @address, url: address_path, method: :patch do |f| %>
-  <p>郵便番号(ハイフンなし)<%= f.text_field :postal_code %></p>
-  <p>住所<%= f.text_field :address %></p>
-  <p>宛名</p><%= f.text_field :name %></p>
-  <%= f.submit '変更内容を保存' %>
-<% end %>
+
