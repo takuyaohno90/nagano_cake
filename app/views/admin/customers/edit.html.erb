@@ -7,18 +7,93 @@
   </ul>
 <% end %>
 
-<%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
-  <p>会員ＩＤ<%= @customer.id %></p>
-  <p>氏名<%= f.text_field :last_name %><%= f.text_field :first_name %></p>
-  <p>フリガナ<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></p>
-  <p>郵便番号<%= f.text_field :postal_code %></p>
-  <p>住所<%= f.text_field :address %></p>
-  <p>電話番号<%= f.text_field :telephone_number %></p>
-  <p>メールアドレス<%= f.text_field :email %></p>
-  <p>会員ステータス
+<div class="container">
+  <div class="row" style="margin-top: 20px;">
+    <h5>会員情報編集</h5>
+  </div>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+  <div class="row">
+    <div class="col-lg-2">
+      会員ＩＤ
+    </div>
+    <div class="col-lg-5">
+      <%= @customer.id %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      氏名
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :first_name %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      フリガナ
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name_kana %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :first_name_kana %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      郵便番号
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :postal_code %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      住所
+    </div>
+    <div class="col-lg-5">
+      <%= f.text_field :address %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      電話番号
+    </div>
+    <div class="col-lg-5">
+      <%= f.text_field :telephone_number %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      メールアドレス
+    </div>
+    <div class="col-lg-5">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+      会員ステータス
+    </div>
+    <div class="col-lg-5">
       <%= f.radio_button :is_deleted, false, id: "is_deleted_false" %>
       <%= f.label :is_deleted, '有効', for: "is_deleted_false" %>
       <%= f.radio_button :is_deleted, true, id: "is_deleted_true" %>
-      <%= f.label :is_deleted, '無効' , for: "is_deleted_true"%></p>
+      <%= f.label :is_deleted, '無効' , for: "is_deleted_true"%>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-5">
       <%= f.submit '変更を保存' %>
-<% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+

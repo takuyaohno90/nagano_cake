@@ -20,6 +20,6 @@ class Order < ApplicationRecord
   end
 
   def address_display
-    '〒' + post_code + '' + shipping_address
+    '〒' + post_code + '' + shipping_address + '' + name
   end
 end

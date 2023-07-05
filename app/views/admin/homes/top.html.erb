@@ -1,33 +1,42 @@
-<table>
-  <tr>
-    <th>購入日時</th>
-    <th>購入者</th>
-    <th>注文個数</th>
-    <th>注文ステータス</th>
-  </tr>
-  <% total = 0 %>
-  <% @order.each do |order| %>
-  <tr>
-    <td><%= link_to admin_order_path(order.id) do %>
-          <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
-        <% end %></td>
-    <td><%= order.customer.last_name + order.customer.first_name %></td>
-        <% order.order_items.each do |order_items| %>
-          <% total += order_items.amount %>
-        <% end %>
-    <td><%= total %></td>
-    <td><% if order.order_status == "stay" %>
-          <%= "入金待ち" %>
-        <% elsif order.order_status == "check" %>
-          <%= "入金確認" %>
-        <% elsif order.order_status == "making" %>
-          <%= "製作中" %>
-        <% elsif  order.order_status == "standby" %>
-          <%= "発送準備中" %>
-        <% else %>
-          <%= "発送済" %>
-        <% end %></td>
-  </tr>
-  <% end %>
-</table>
-<%= paginate @order %>
+<dvi class="container">
+  <div class="row" style="margin-top: 20px;">
+    <h5>注文履歴一覧</h5>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center">
+    <table class="table table-bordered">
+      <tr>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+      <% total = 0 %>
+      <% @order.each do |order| %>
+      <tr>
+        <td><%= link_to admin_order_path(order.id) do %>
+              <span class="text-dark"><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></span>
+            <% end %></td>
+        <td><%= order.customer.last_name + order.customer.first_name %></td>
+            <% order.order_items.each do |order_items| %>
+              <% total += order_items.amount %>
+            <% end %>
+        <td><%= total %></td>
+        <td><% if order.order_status == "stay" %>
+              <%= "入金待ち" %>
+            <% elsif order.order_status == "check" %>
+              <%= "入金確認" %>
+            <% elsif order.order_status == "making" %>
+              <%= "製作中" %>
+            <% elsif  order.order_status == "standby" %>
+              <%= "発送準備中" %>
+            <% else %>
+              <%= "発送済" %>
+            <% end %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= paginate @order %>
+</dvi>
+
+

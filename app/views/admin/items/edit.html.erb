@@ -7,17 +7,80 @@
   </ul>
 <% end %>
 
+<div class="container">
+  <div class="row" style="margin-left: 50px;">
+    <h5>商品編集</h5>
+  </div>
+  <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="row">
+      <dvi class="col-lg-4">
+        商品画像
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="row">
+      <dvi class="col-lg-4">
+        商品名
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="row">
+      <dvi class="col-lg-4">
+        商品説明
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.text_area :introduction %>
+      </div>
+    </div>
+    <div class="row">
+      <dvi class="col-lg-4">
+        ジャンル
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+      </div>
+    </div>
+    <div class="row">
+      <dvi class="col-lg-4">
+        税抜き価格
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.text_field :price %>
+      </div>
+    </div>
+    <div class="row">
+      <dvi class="col-lg-4">
+        販売ステータス
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.radio_button :is_active, true, id: "is_active_true" %>
+        <%= f.label :is_active_true, '販売中', for: "is_active_true" %>
+        <%= f.radio_button :is_active, false, id: "is_active_false" %>
+        <%= f.label :is_active_false, '販売停止中', for: "is_active_false" %>
+      </div>
+    </div>
+    <div class="row">
+      <dvi class="col-lg-4">
+      </dvi>
+      <div class="col-lg-6">
+        <%= f.submit '変更を保存', class: "btn btn-sm btn-succcess"%>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
-  <p>商品画像<%= f.file_field :image, accept: "image/*" %></p>
-  <p>商品名<%= f.text_field :name %></p>
-  <p>商品説明<%= f.text_area :introduction %></p>
-  <p>ジャンル<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></p>
-  <p>税抜き価格<%= f.text_field :price %></p>
-  <p>販売ステータス<%= f.radio_button :is_active, true, id: "is_active_true" %>
-  <%= f.label :is_active_true, '販売中', for: "is_active_true" %>
-  <%= f.radio_button :is_active, false, id: "is_active_false" %>
-  <%= f.label :is_active_false, '販売停止中', for: "is_active_false" %></p>
 
-  <%= f.submit '変更を保存' %>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+
+
 <% end %>
