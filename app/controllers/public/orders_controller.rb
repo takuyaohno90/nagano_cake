@@ -2,7 +2,13 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    @order = Order.new
+    cart_item = current_customer.cart_items.all
+    if cart_item.present?
+      @order = Order.new
+    else
+      redirect_to cart_items_path
+    end
+
   end
 
   def check

@@ -1,27 +1,45 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h4 class="m-3">ログイン</h4>
-      <h5>会員の方はこちらからログイン</h5>
-      <%= form_with model:@customer, url: customer_session_path do |f| %>
-      <div class="row form-group">
-        <%= f.label :"メールアドレス", class: "col-lg-3" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-lg-3" %>
+  <h5>ログイン</h5>
+  <p  style="margin-top: 20px">会員の方はこちらからログイン</p>
+  <div class="justify-content-center align-items-center" style="margin-top: 10px">
+    <%= form_with model:@customer, url: customer_session_path do |f| %>
+    <dvi class="row" style="margin-top: 5px">
+      <div class="col-lg-3 text-right">
+        <%= f.label :"メールアドレス"%>
       </div>
-      <div class="row form-group">
-        <%= f.label :"パスワード", class: "col-lg-3" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "col-lg-3" %>
+      <div class="col-lg-6">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
       </div>
-      <div class="actions ml-3">
-        <%= f.submit "ログイン" , class: "btn btn-sm btn-info col-lg-3" %>
+    </dvi>
+    <div class="row" style="margin-top: 5px">
+      <div class="col-lg-3 text-right">
+        <div class=" text-end"><%= f.label :"パスワード"%></div>
       </div>
-      <% end %>
+      <div class="col-lg-6">
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-3">
+    <div class="row" style="margin-top: 5px">
+      <div class="col-lg-3">
+      </div>
+      <div class="col-lg-5" style="margin-top: 20px">
+        <%= f.submit "ログイン" , class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+    <% end %>
+    <div class="row" style="margin-top: 25px">
       <h5>会員登録がお済みでない方</h5>
-      <%= render "public/shared/links" %>から新規登録を行ってください。
+    </div>
+    <div class="row style="margin-top: 5px"">
+      <div class="col-lg-3 text-right">
+        <%= render "public/shared/links" %>
+      </div>
+      <div class="col-lg-4">
+        から新規登録を行ってください。
+      </div>
     </div>
   </div>
 </div>
+
+
+
