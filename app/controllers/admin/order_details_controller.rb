@@ -17,8 +17,11 @@ class Admin::OrderDetailsController < ApplicationController
     unless completed == true
       @order_item.order.update(order_status: "standby")
     end
-    redirect_to admin_order_path(@order_item.order_id)
 
+    if @order_item.production_status == "making"
+      @order_item.order.update(order_status: "making")
+    end
+    redirect_to admin_order_path(@order_item.order_id)
   end
 
   private
